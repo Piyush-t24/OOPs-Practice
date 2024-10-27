@@ -5,3 +5,55 @@ into integer and fractional parts and assigns the value to the private members a
 respectively. Finally, calculate the square of an integer and fractional part and add them to
 another variable c.*/
 
+#include <iostream>
+using namespace std;
+
+class FloatSquare {
+private:
+    float a; 
+    float b; 
+
+public:
+    void setFloat(float num) {
+     
+        a = static_cast<int>(num);
+        b = num - a;
+    }
+
+    float calculateSquare() {
+   
+        float squareA = a * a;
+
+        float squareB = b * b;
+
+        float c = squareA + squareB;
+
+        return c;
+    }
+
+    float getA() {
+        return a;
+    }
+
+    float getB() {
+        return b;
+    }
+};
+
+int main() {
+    FloatSquare fs;
+    float num;
+
+    cout << "Enter a float number: ";
+    cin >> num;
+
+    fs.setFloat(num);
+
+    float result = fs.calculateSquare();
+
+    cout << "Square of integer part: " << fs.getA() * fs.getA() << endl;
+    cout << "Square of fractional part: " << fs.getB() * fs.getB() << endl;
+    cout << "Sum of squares: " << result << endl;
+
+    return 0;
+}
